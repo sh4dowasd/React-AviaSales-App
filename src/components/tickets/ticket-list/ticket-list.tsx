@@ -1,4 +1,4 @@
-import { Button, Divider, Spin } from "antd"
+import { Button, Spin } from "antd"
 import { LoadingOutlined } from "@ant-design/icons"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
