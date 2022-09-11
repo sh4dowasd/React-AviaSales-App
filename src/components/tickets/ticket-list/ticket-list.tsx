@@ -1,4 +1,5 @@
-import { Button } from "antd"
+import { Button, Spin } from "antd"
+import { LoadingOutlined } from "@ant-design/icons"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
@@ -10,11 +11,13 @@ import Ticket from "../ticket/ticket"
 import "./tickets.scss"
 
 const TicketList = () => {
+  const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
   const [manyTickets, changeManyTickets] = useState(0)
   let max = 0
   const idSearch = useSelector((state: ITicketId) => state.idReducer.id)
   const arrayTickets = useSelector((state: ITicketList) => state.ticketsReducer.visibleTickets)
+  const antIcon = <LoadingOutlined style={{ fontSize: 40, color: "blue" }} spin />
 
   const getTickets = async () => {
     if (idSearch) {
@@ -29,11 +32,17 @@ const TicketList = () => {
   }, [])
 
   useEffect(() => {
+    setLoading(!loading)
+    console.log(loading)
+  }, [arrayTickets])
+
+  useEffect(() => {
     getTickets()
   }, [idSearch])
 
   return (
     <div className="tickets">
+      <div className="loading">{loading && <Spin indicator={antIcon} />}</div>
       {arrayTickets.slice(manyTickets, manyTickets + 5).map((ticket) => (
         <div className="ticket" key={max++}>
           <Ticket ticket={ticket} />
