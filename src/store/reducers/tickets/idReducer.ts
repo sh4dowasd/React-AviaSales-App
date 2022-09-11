@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 import fetchTicketsId from "../../../api"
 
-const initialState: { id: string } = {
+const initialState = {
   id: "",
 }
 

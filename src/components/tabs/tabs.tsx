@@ -1,32 +1,31 @@
-import { useEffect } from "react"
 import "./tabs.scss"
-import { useSelector, useDispatch } from "react-redux"
+import { useEffect } from "react"
 import { Button } from "antd"
+import { useSelector, useDispatch } from "react-redux"
 import cn from "classnames"
 
-import { ITabs, ITransfer } from "../models"
-import { cheap, fast, optimal } from "../../store/reducers/tabsReducer/action"
+import { ITransfer, ITabs } from "../models"
 import {
   changeCheapFilter,
   changeFastFilter,
   changeOptimalFilter,
   changeTransferFilter,
 } from "../../store/reducers/tickets/ticketsReducer"
+import { cheap, fast, optimal } from "../../store/reducers/tabsReducer/tabsReducer"
 import { AppDispatch } from "../../store/store"
-const Tabs = () => {
-  const transFilter = useSelector((state: ITransfer) => state.transferFilter.checkFilter)
-  const dispatch = useDispatch<AppDispatch>()
-  const tabsFilter = useSelector((state: ITabs) => state.tabsFilter.nameTabsFilter)
 
+const Tabs = () => {
+  const transFilter = useSelector((state: ITransfer) => state.filtersReducer.checkFilter)
+  const dispatch = useDispatch<AppDispatch>()
+  const tabsFilter = useSelector((state: ITabs) => state.tabsReducer.tabsFilter)
   useEffect(() => {
     dispatch(changeTransferFilter(transFilter))
   }, [tabsFilter])
-
   return (
     <div className="tabs">
       <span className="buttons-container">
         <Button
-          className={cn({ blue_but: tabsFilter === "cheapest" })}
+          className={cn({ blue_but: tabsFilter === "cheapest" }, "left")}
           onClick={() => {
             dispatch(cheap())
             dispatch(changeCheapFilter())
@@ -35,7 +34,7 @@ const Tabs = () => {
           Самый дешевый
         </Button>
         <Button
-          className={cn({ blue_but: tabsFilter === "fastest" })}
+          className={cn({ blue_but: tabsFilter === "fastest" }, "center")}
           onClick={() => {
             dispatch(fast())
             dispatch(changeFastFilter())
@@ -44,7 +43,7 @@ const Tabs = () => {
           Самый быстрый
         </Button>
         <Button
-          className={cn({ blue_but: tabsFilter === "optimal" })}
+          className={cn({ blue_but: tabsFilter === "optimal" }, "right")}
           onClick={() => {
             dispatch(optimal())
             dispatch(changeOptimalFilter())

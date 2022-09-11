@@ -12,7 +12,7 @@ const Ticket = ({ ticket }: IProps) => {
   const d2 = new Date(ticket.segments[1].date)
 
   return (
-    <div className="ticket">
+    <>
       <div className="header">
         <p className="price">{ticket.price} P</p>
         <p className="carrier">
@@ -55,7 +55,7 @@ const Ticket = ({ ticket }: IProps) => {
           <p className="stops">{ticket.segments[1].stops}</p>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

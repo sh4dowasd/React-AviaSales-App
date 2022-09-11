@@ -20,8 +20,7 @@ export const fetchSomeTickets = createAsyncThunk<IRes, string, {}>(
       return []
     }
     try {
-      const response = await fetch(`https://front-test.dev.aviasales.ru/tickets?searchId=2cbkl`)
-      console.log(response)
+      const response = await fetch(`https://front-test.dev.aviasales.ru/tickets?searchId=${id}`)
       if (!response.ok) {
         throw new Error("Сервер не отвечает")
       }

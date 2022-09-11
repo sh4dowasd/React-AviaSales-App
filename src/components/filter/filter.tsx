@@ -1,9 +1,9 @@
-import { useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
-
 import "./filter.scss"
-import { ITabs, ITransfer } from "../models"
-import { All, Zero, One, Two, Three } from "../../store/reducers/filtersReducer/action"
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from "react"
+
+import { ITransfer, ITabs } from "../models"
+import { All, Zero, One, Two, Three } from "../../store/reducers/filtersReducer/filersReducer"
 import {
   changeCheapFilter,
   changeFastFilter,
@@ -12,10 +12,11 @@ import {
 } from "../../store/reducers/tickets/ticketsReducer"
 
 const Filter = () => {
-  const transFilter = useSelector((state: ITransfer) => state.transferFilter.checkFilter)
+  const transFilter = useSelector((state: ITransfer) => state.filtersReducer.checkFilter)
   const dispatch = useDispatch()
-  const tabsFilter = useSelector((state: ITabs) => state.tabsFilter.nameTabsFilter)
-  const filtersCombo = () => {
+  const tabsFilter = useSelector((state: ITabs) => state.tabsReducer.tabsFilter)
+
+  const disCombo = () => {
     switch (tabsFilter) {
       case "cheapest":
         dispatch(changeCheapFilter())
@@ -37,7 +38,7 @@ const Filter = () => {
 
   useEffect(() => {
     dispatch(changeTransferFilter(transFilter))
-    filtersCombo()
+    disCombo()
   }, [transFilter])
 
   return (
@@ -48,10 +49,8 @@ const Filter = () => {
           className="my-checkbox"
           id="id1"
           type="checkbox"
+          onChange={() => dispatch(All())}
           checked={transFilter[0]}
-          onChange={() => {
-            dispatch(All())
-          }}
         />
         <label htmlFor="id1">Все</label>
       </span>
@@ -60,10 +59,8 @@ const Filter = () => {
           className="my-checkbox"
           id="id2"
           type="checkbox"
+          onChange={() => dispatch(Zero())}
           checked={transFilter[1]}
-          onChange={() => {
-            dispatch(Zero())
-          }}
         />
         <label htmlFor="id2">Без пересадок</label>
       </span>
@@ -72,10 +69,8 @@ const Filter = () => {
           className="my-checkbox"
           id="id3"
           type="checkbox"
+          onChange={() => dispatch(One())}
           checked={transFilter[2]}
-          onChange={() => {
-            dispatch(One())
-          }}
         />
         <label htmlFor="id3">1 пересадка</label>
       </span>
@@ -84,10 +79,8 @@ const Filter = () => {
           className="my-checkbox"
           id="id4"
           type="checkbox"
+          onChange={() => dispatch(Two())}
           checked={transFilter[3]}
-          onChange={() => {
-            dispatch(Two())
-          }}
         />
         <label htmlFor="id4">2 пересадки</label>
       </span>
@@ -96,10 +89,8 @@ const Filter = () => {
           className="my-checkbox"
           id="id5"
           type="checkbox"
+          onChange={() => dispatch(Three())}
           checked={transFilter[4]}
-          onChange={() => {
-            dispatch(Three())
-          }}
         />
         <label htmlFor="id5">3 пересадки</label>
       </span>

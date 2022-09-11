@@ -14,19 +14,19 @@ export const filtersReducer = createSlice({
         : [true, ...state.checkFilter.slice(1)]
     },
     One(state) {
-      state.checkFilter = state.checkFilter.map((el, index) => (index === 1 ? !el : el))
+      state.checkFilter = state.checkFilter.map((el, index) => (index === 2 ? !el : el))
       state.checkFilter = state.checkFilter.slice(1).includes(false)
         ? [false, ...state.checkFilter.slice(1)]
         : [true, ...state.checkFilter.slice(1)]
     },
     Two(state) {
-      state.checkFilter = state.checkFilter.map((el, index) => (index === 1 ? !el : el))
+      state.checkFilter = state.checkFilter.map((el, index) => (index === 3 ? !el : el))
       state.checkFilter = state.checkFilter.slice(1).includes(false)
         ? [false, ...state.checkFilter.slice(1)]
         : [true, ...state.checkFilter.slice(1)]
     },
     Three(state) {
-      state.checkFilter = state.checkFilter.map((el, index) => (index === 1 ? !el : el))
+      state.checkFilter = state.checkFilter.map((el, index) => (index === 4 ? !el : el))
       state.checkFilter = state.checkFilter.slice(1).includes(false)
         ? [false, ...state.checkFilter.slice(1)]
         : [true, ...state.checkFilter.slice(1)]

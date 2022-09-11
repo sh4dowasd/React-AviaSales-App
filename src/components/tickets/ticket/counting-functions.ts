@@ -48,4 +48,7 @@ export const getStops = (stops: number) => {
   if (stops === 1) {
     return `${stops} пересадка`
   }
+  if (stops === 0) {
+    return `${stops} пересадок`
+  }
 }

@@ -42,29 +42,31 @@ export interface IIniat {
 }
 
 export interface ITicketList {
-  Tickets: {
-    someTickets: Array<ITicket>;
-    someFilterTickets: Array<ITicket>;
-    visibleTickets: Array<ITicket>;
-    status?: "ready" | "pending";
-    error?: null | string;
-  };
+  ticketsReducer: {
+    someTickets: Array<ITicket>
+    someFilterTickets: Array<ITicket>
+    visibleTickets: Array<ITicket>
+    status?: "ready" | "pending"
+    error?: null | string
+  }
 }
 
 export interface ITicketId {
-  TicketId: {
-    id: string;
-  };
+  idReducer: I1
 }
 
 export interface ITransfer {
-  transferFilter: {
+  filtersReducer: {
     checkFilter: Array<boolean>
   }
 }
 
 export interface ITabs {
-  tabsFilter: {
-    nameTabsFilter: "cheapest" | "fastest" | "optimal"
+  tabsReducer: {
+    tabsFilter: "cheapest" | "fastest" | "optimal"
   }
+}
+
+export interface I1 {
+  id: string
 }

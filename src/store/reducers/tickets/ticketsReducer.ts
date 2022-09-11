@@ -1,4 +1,3 @@
-/* eslint-disable default-param-last */
 import { createSlice } from "@reduxjs/toolkit"
 
 import { IIniat } from "../../../components/models"
@@ -45,7 +44,6 @@ export const TicketReducerSlice = createSlice({
         state.someTickets = state.someTickets.concat(action.payload.tickets)
         state.visibleTickets = state.visibleTickets.concat(action.payload.tickets)
         state.status = "ready"
-        console.log(state.someTickets)
       })
       .addCase(fetchSomeTickets.rejected, (state, action) => {
         state.status = action.error.message
