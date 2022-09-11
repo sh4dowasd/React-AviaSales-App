@@ -61,7 +61,7 @@ const TicketList = () => {
     <div className="tickets">
       <div className="loading">{loading && <Spin indicator={antIcon} />}</div>
       <div className="found">
-        {found && <div className="blue_but">Рейсов, подходящих под заданные фильтры, не найдено</div>}
+        {found && <div className="blue_label">Рейсов, подходящих под заданные фильтры, не найдено</div>}
       </div>
       {arrayTickets.slice(manyTickets, manyTickets + 5).map((ticket) => (
         <div className="ticket" key={max++}>
