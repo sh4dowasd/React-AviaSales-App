@@ -18,6 +18,19 @@
     background: #fff;
     text-transform: uppercase;
 }
+.blue_but {
+    display: flex;
+    padding: 0 25px;
+    height: 50px;
+    margin-bottom: 20px;
+    align-items: center;
+    border-radius: 5px;
+    color: #fff;
+    border-color: #1890ff;
+    background: #1890ff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+}
 .ant-btn-primary {
     color: #fff;
     border-color: #1890ff;

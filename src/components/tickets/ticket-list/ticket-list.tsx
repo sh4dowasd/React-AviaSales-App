@@ -1,4 +1,4 @@
-import { Button, Spin } from "antd"
+import { Button, Divider, Spin } from "antd"
 import { LoadingOutlined } from "@ant-design/icons"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
@@ -12,12 +12,13 @@ import "./tickets.scss"
 
 const TicketList = () => {
   const [loading, setLoading] = useState(true)
+  const [found, setFound] = useState(true)
   const dispatch = useDispatch()
   const [manyTickets, changeManyTickets] = useState(0)
   let max = 0
   const idSearch = useSelector((state: ITicketId) => state.idReducer.id)
   const arrayTickets = useSelector((state: ITicketList) => state.ticketsReducer.visibleTickets)
-  const antIcon = <LoadingOutlined style={{ fontSize: 40, color: "blue" }} spin />
+  const antIcon = <LoadingOutlined style={{ fontSize: 40, color: "blue", marginBottom: 20 }} spin />
 
   const getTickets = async () => {
     if (idSearch) {
@@ -31,9 +32,25 @@ const TicketList = () => {
     dispatch(fetchTicketsId())
   }, [])
 
+  const onFound = () => {
+    if (arrayTickets.length === 0) {
+      setLoading(!loading)
+      const delayDebounceFn = setTimeout(() => {
+        setFound(!found)
+        setLoading(false)
+      }, 300)
+
+      return () => clearTimeout(delayDebounceFn)
+    }
+    if (arrayTickets.length > 0) {
+      setFound(!found)
+      setLoading(false)
+    }
+  }
+
   useEffect(() => {
     setLoading(!loading)
-    console.log(loading)
+    onFound()
   }, [arrayTickets])
 
   useEffect(() => {
@@ -43,6 +60,9 @@ const TicketList = () => {
   return (
     <div className="tickets">
       <div className="loading">{loading && <Spin indicator={antIcon} />}</div>
+      <div className="found">
+        {found && <div className="blue_but">Рейсов, подходящих под заданные фильтры, не найдено</div>}
+      </div>
       {arrayTickets.slice(manyTickets, manyTickets + 5).map((ticket) => (
         <div className="ticket" key={max++}>
           <Ticket ticket={ticket} />
