@@ -43,7 +43,7 @@ const TicketList = () => {
       return () => clearTimeout(delayDebounceFn)
     }
     if (arrayTickets.length > 0) {
-      setFound(!found)
+      setFound(false)
       setLoading(false)
     }
   }
