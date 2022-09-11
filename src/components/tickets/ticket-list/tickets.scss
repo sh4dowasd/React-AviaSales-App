@@ -1,0 +1,31 @@
+.ant-btn {
+    line-height: 20px;
+    position: relative;
+    display: inline-block;
+    width: 504px;
+    height: 50px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    white-space: nowrap;
+    text-align: center;
+    background-image: none;
+    border: 1px solid #DFE5EC;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+    cursor: pointer;
+    color: #4A4A4A;
+    border-color: #d9d9d9;
+    background: #fff;
+    text-transform: uppercase;
+}
+.ant-btn-primary {
+    color: #fff;
+    border-color: #1890ff;
+    background: #1890ff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+}
+.view-tickets {
+    background: #2196F3;
+    border-radius: 5px;
+}

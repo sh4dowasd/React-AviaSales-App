@@ -1,0 +1,64 @@
+.tabs {
+    margin-bottom: 20px;
+    .buttons-container {
+        .active {
+            background: #2196F3;
+            color: #fff;
+            border: none;
+        }
+        .ant-btn {
+            line-height: 20px;
+            position: relative;
+            display: inline-block;
+            width: 168px;
+            height: 50px;
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 600;
+            white-space: nowrap;
+            text-align: center;
+            background-image: none;
+            border: 1px solid #DFE5EC;
+            box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+            cursor: pointer;
+            color: #4A4A4A;
+            border-color: #d9d9d9;
+            background: #fff;
+          }
+        button {
+            width: 168px;
+            height: 50px;
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 20px;
+            align-items: center;
+            text-align: center;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #4A4A4A;
+            background: #fff;
+        }
+        .ant-btn-primary {
+            color: #fff;
+            border-color: #1890ff;
+            background: #1890ff;
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+            box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+        }
+        .right {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        .center {
+            border-left: none;
+            border-right: none;
+        }
+        .left {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        } 
+    }
+    
+}
