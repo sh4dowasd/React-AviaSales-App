@@ -13,6 +13,7 @@ import "./tickets.scss"
 const TicketList = () => {
   const [loading, setLoading] = useState(true)
   const [found, setFound] = useState(true)
+  const [addButton, setAddButton] = useState(true)
   const dispatch = useDispatch()
   const [manyTickets, changeManyTickets] = useState(0)
   let max = 0
@@ -37,6 +38,7 @@ const TicketList = () => {
       setLoading(!loading)
       const delayDebounceFn = setTimeout(() => {
         setFound(!found)
+        setAddButton(false)
         setLoading(false)
       }, 300)
 
@@ -45,6 +47,7 @@ const TicketList = () => {
     if (arrayTickets.length > 0) {
       setFound(false)
       setLoading(false)
+      setAddButton(true)
     }
   }
 
@@ -68,9 +71,11 @@ const TicketList = () => {
           <Ticket ticket={ticket} />
         </div>
       ))}
-      <Button className="view-tickets" type="primary" onClick={() => changeManyTickets(manyTickets + 5)}>
-        Показать еще 5 билетов!
-      </Button>
+      {addButton && (
+        <Button className="view-tickets" type="primary" onClick={() => changeManyTickets(manyTickets + 5)}>
+          Показать еще 5 билетов!
+        </Button>
+      )}
     </div>
   )
 }
